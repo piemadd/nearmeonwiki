@@ -1,0 +1,10 @@
+body {
+  background-color: #222;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+}
+
+a, a:visited {
+  color: #fff;
+  text-decoration: underline;
+}

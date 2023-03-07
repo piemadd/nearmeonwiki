@@ -5,18 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wikipedia Locations Near Me</title>
-    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
-    <link
-      href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
-      rel="stylesheet"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/attribution.css" />
 
     <!-- Google tag (gtag.js) -->
     <script
@@ -34,19 +29,23 @@
     </script>
   </head>
   <body>
-    <div id="map" style="width: 100vw; height: 100vh"></div>
-    <div class="map-over">
-      <div class="attribution">
-        <a href="/attribution.html">Attribution</a> |
-        <a href="https://piemadd.com/">© Piero Maddaleni</a>
-      </div>
-    </div>
-    <div id="loading">
-      <h1>Loading...</h1>
-      <p id="loadingMessage">Initializing...</p>
-    </div>
-    <script src="./scripts/mapStyle.js"></script>
-    <script src="./scripts/baseStyle.js"></script>
-    <script src="./scripts/index.js"></script>
+    <h3>Data attribution</h1>
+    <ul>
+      <li>
+        <a href="https://protomaps.com">Protomaps</a> - Map tile generation
+      </li>
+      <li>
+        <a href="https://openstreetmap.org/copyright">© OpenStreetMap</a> - Map
+        data
+      </li>
+      <li>
+        <a href="https://www.wikipedia.org/">Wikipedia</a> - Wikipedia articles
+      </li>
+      <li>
+        <a href="https://www.amtraker.com/">Amtraker</a> - Map tiles and hosting
+      </li>
+    </ul>
+    <h3>Privacy Policy</h3>
+    <p>Our privacy policy is available <a href='/privacy.txt'>here</a>.</p>
   </body>
 </html>
