@@ -45,7 +45,7 @@ var map = new maplibregl.Map({
 const loadMarkers = async () => {
   console.log('loading chunk list')
   loadingMessage.innerText = 'Loading chunk list...';
-  const chunksRes = await fetch('https://wikilocationdata.piemadd.com/output/index.json')
+  const chunksRes = await fetch('https://data.nearmeon.wiki/output/index.json')
   const fileKeys = await chunksRes.json();
   console.log('file chunks loaded')
   loadingMessage.innerText = 'Loading data chunks...';
@@ -53,7 +53,7 @@ const loadMarkers = async () => {
   console.log('loading data chunks')
   loadingMessage.innerText = 'Loading data chunks...';
   for (let i = 0; i < fileKeys.length; i++) {
-    const res = await fetch(`https://wikilocationdata.piemadd.com/output/${fileKeys[i]}.json`);
+    const res = await fetch(`https://data.nearmeon.wiki/output/${fileKeys[i]}.json`);
     const data = await res.json();
 
     points.push(...data);
