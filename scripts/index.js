@@ -12,6 +12,9 @@ let baseMapStyle = mapStyle.layers;
 
 var map = new maplibregl.Map({
   container: 'map',
+  hash: true,
+  attributionControl: false,
+  refreshExpiredTiles: false,
   style: {
     id: "43f36e14-e3f5-43c1-84c0-50a9c80dc5c7",
     name: "MapLibre",
@@ -65,7 +68,7 @@ const loadMarkers = async () => {
   console.log('data chunks loaded')
   loadingMessage.innerText = 'Data chunks loaded';
   console.log('creating geojson')
-  loadingMessage.innerText = 'Creating geojson...';
+  //loadingMessage.innerText = 'Creating geojson...';
 
   points.forEach((point) => {
     pointsGeoJSON.features.push({
@@ -81,7 +84,7 @@ const loadMarkers = async () => {
   })
 
   console.log('geojson created, returning')
-  loadingMessage.innerText = 'Geojson created, returning...';
+  //loadingMessage.innerText = 'Geojson created, returning...';
 }
 
 map.on('load', async () => {
@@ -194,6 +197,13 @@ map.on('load', async () => {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
+    const extract = data.extract;
+    // get location of first period after 100 words
+    const firstPeriod = extract.indexOf('.', extract.split(' ').slice(0, 100).join(' ').length) + 1;
+    const trimmedExtract = extract.slice(0, firstPeriod > 0 ? firstPeriod : extract.length).replaceAll(' ()', '');
+
+    console.log(firstPeriod)
+
     const popup = new maplibregl.Popup({
       maxWidth: '95vw',
       anchor: 'bottom',
@@ -202,7 +212,7 @@ map.on('load', async () => {
       .setLngLat(coordinates)
       .setHTML(`
         <h3>${data.title}</h3>
-        <p>${data.extract}</p>
+        <p>${trimmedExtract}</p>
         <a href="https://en.wikipedia.org/wiki/${data.title}" target="_blank">View on Wikipedia</a>
       `)
       .addTo(map);
