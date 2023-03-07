@@ -23,6 +23,25 @@ body,
   z-index: 999;
 }
 
+.map-over > .attribution {
+  position: fixed;
+  z-index: 5;
+  flex-wrap: wrap;
+  bottom: 0;
+  right: 0;
+  border-radius: 4px 0 0 0;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #333;
+  border-top-left-radius: 4px;
+  padding: 4px 8px;
+}
+
+.map-over > .attribution > a, .map-over > .attribution > a:visited {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .maplibregl-popup {
   width: 95vw !important;
   max-width: 400px !important;
@@ -47,7 +66,8 @@ body,
   font-size: 1.4em !important;
 }
 
-.maplibregl-popup-content a, .maplibregl-popup-content a:visited {
+.maplibregl-popup-content a,
+.maplibregl-popup-content a:visited {
   color: #fff !important;
   text-decoration: underline !important;
   font-size: 1.4em !important;
