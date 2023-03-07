@@ -97,7 +97,7 @@ map.on('load', async () => {
   console.log(pointsGeoJSON)
 
   console.log('loading in markers')
-  loadingMessage.innerText = 'Loading in markers... (this will take a while)';
+  loadingMessage.innerText = 'Loading in markers (takes 10-15 seconds)';
 
   map.on('idle', function () {
     loading.style.display = 'none';
