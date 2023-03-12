@@ -95,6 +95,17 @@ map.on('load', async () => {
   }), 'top-right');
 
   map.addControl(new maplibregl.FullscreenControl());
+
+  map.addControl(new maplibregl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true,
+    fitBoundsOptions: {
+      zoom: 12,
+    }
+  }));
+
   await loadMarkers();
 
   console.log(pointsGeoJSON)
