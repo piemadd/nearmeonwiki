@@ -25,9 +25,9 @@
   ],
   "screenshots": [
     {
-      "src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
-      "sizes": "2880x1800",
-      "type": "image/png",
+      "src": "https://nearmeon.wiki/content/screenshots/screen1.png",
+      "sizes": "1440x3120",
+      "type": "image/jpg",
       "description": "A screenshot of the home page"
     }
   ],
