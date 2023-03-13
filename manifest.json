@@ -6,7 +6,7 @@
   "description": "View and read up on all 1.3 million Wikipedia locations with one simple and easy to use map!",
   "lang": "en",
   "dir": "ltr",
-  "theme_color": "#ffffff",
+  "theme_color": "#333333",
   "background_color": "#333333",
   "orientation": "any",
   "icons": [
