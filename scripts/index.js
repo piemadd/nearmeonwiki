@@ -195,11 +195,20 @@ map.on('load', async () => {
 
     console.log(meta)
 
-    const req = await fetch(`https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids=${meta.properties.pageID}`);
-    const res = await req.json();
-    const data = res.query.pages[meta.properties.pageID];
+    const metaReq = await fetch(`https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids=${meta.properties.pageID}`);
+    const metaRes = await metaReq.json();
+    const metaData = metaRes.query.pages[meta.properties.pageID];
 
-    console.log(data)
+    const imageReq = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages|pageterms&piprop=thumbnail&pithumbsize=600&pageids=${meta.properties.pageID}&origin=*`);
+    const imageRes = await imageReq.json();
+    const imageData = imageRes.query.pages[0];
+
+    console.log(imageData)
+
+    const imageObj = (imageData.thumbnail && imageData.thumbnail.source) ? `<center><img class='articleImage' src='${imageData.thumbnail.source}'></img></center>` : '';
+
+    console.log(metaData)
+    console.log(imageData)
 
     // Ensure that if the map is zoomed out such that
     // multiple copies of the feature are visible, the
@@ -208,23 +217,20 @@ map.on('load', async () => {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    const extract = data.extract;
-    // get location of first period after 100 words
-    const firstPeriod = extract.indexOf('.', extract.split(' ').slice(0, 100).join(' ').length) + 1;
-    const trimmedExtract = extract.slice(0, firstPeriod > 0 ? firstPeriod : extract.length).replaceAll(' ()', '');
-
-    console.log(firstPeriod)
-
     const popup = new maplibregl.Popup({
-      maxWidth: '95vw',
+      maxWidth: '85vw',
+      maxHeight: '50vh',
       anchor: 'bottom',
       offset: 16
     })
       .setLngLat(coordinates)
       .setHTML(`
-        <h3>${data.title}</h3>
-        <p>${trimmedExtract}</p>
-        <a href="https://en.wikipedia.org/wiki/${data.title}" target="_blank">View on Wikipedia</a>
+        <h3>${metaData.title}</h3>
+        <div class='articleMoreInfo'>
+        ${imageObj}
+        <p>${metaData.extract}</p>
+        </div>
+        <a href="https://en.wikipedia.org/wiki/${metaData.title}" target="_blank">View on Wikipedia</a>
       `)
       .addTo(map);
 
