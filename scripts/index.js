@@ -33,9 +33,10 @@ var map = new maplibregl.Map({
           "https://tileb.piemadd.com/tiles/{z}/{x}/{y}.mvt",
           "https://tilec.piemadd.com/tiles/{z}/{x}/{y}.mvt",
           "https://tiled.piemadd.com/tiles/{z}/{x}/{y}.mvt",
-          //"http://10.0.0.237:8081/tiles/{z}/{x}/{y}.mvt"
         ],
-        maxzoom: 13,
+        maxzoom: 15,
+        attribution:
+          "Map Data &copy; OpenStreetMap Contributors | &copy; Transitstatus 2023 | Uses Protomaps",
       },
     },
     version: 8,
